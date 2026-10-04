@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "bloodGroup": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["id", "name", "role"]
+    },
+    "HealthReport": {
+      "title": "HealthReport",
+      "description": "Medical record or lab diagnostic document",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patientId": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "doctorOrLabName": { "type": "string" },
+        "date": { "type": "string" },
+        "summary": { "type": "string" },
+        "vitalsBloodPressure": { "type": "string" },
+        "vitalsHeartRate": { "type": "string" },
+        "vitalsSpO2": { "type": "string" },
+        "vitalsBloodSugar": { "type": "string" },
+        "timestamp": { "type": "number" }
+      },
+      "required": ["id", "patientId", "title", "category"]
+    },
+    "SkinScan": {
+      "title": "SkinScan",
+      "description": "AI Skin lesion analysis record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patientId": { "type": "string" },
+        "conditionName": { "type": "string" },
+        "riskLevel": { "type": "string" },
+        "confidenceScore": { "type": "number" },
+        "recommendation": { "type": "string" },
+        "timestamp": { "type": "number" }
+      },
+      "required": ["id", "patientId", "conditionName", "riskLevel"]
+    },
+    "Medication": {
+      "title": "Medication",
+      "description": "Scheduled prescription or medication reminder",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patientId": { "type": "string" },
+        "name": { "type": "string" },
+        "dosage": { "type": "string" },
+        "frequency": { "type": "string" },
+        "timing": { "type": "string" },
+        "isTakenToday": { "type": "boolean" },
+        "timestamp": { "type": "number" }
+      },
+      "required": ["id", "patientId", "name", "dosage"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile document"
+    },
+    "/users/{userId}/healthReports/{reportId}": {
+      "schema": { "$ref": "#/entities/HealthReport" },
+      "description": "User sensitive health and clinical reports"
+    },
+    "/users/{userId}/skinScans/{scanId}": {
+      "schema": { "$ref": "#/entities/SkinScan" },
+      "description": "User skin scan records"
+    },
+    "/users/{userId}/medications/{medId}": {
+      "schema": { "$ref": "#/entities/Medication" },
+      "description": "User prescribed medications"
+    }
+  }
+}

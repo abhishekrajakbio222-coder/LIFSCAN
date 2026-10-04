@@ -1,0 +1,8 @@
+{
+  "name": "Lifscan",
+  "description": "AI-powered medical document and prescription scanner, emergency SOS alerts, doctor appointments, and encrypted medical vault.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
